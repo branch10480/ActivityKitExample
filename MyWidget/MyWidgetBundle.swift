@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 
+// 複数のWidgetを提供できる
 @main
 struct MyWidgetBundle: WidgetBundle {
     var body: some Widget {
