@@ -8,50 +8,67 @@
 import ActivityKit
 import WidgetKit
 import SwiftUI
-
-struct MyWidgetAttributes: ActivityAttributes {
-    public struct ContentState: Codable, Hashable {
-        // Dynamic stateful properties about your activity go here!
-        var value: Int
-    }
-
-    // Fixed non-changing properties about your activity go here!
-    var name: String
-}
+import MyLiveActivity
 
 struct MyWidgetLiveActivity: Widget {
+    /// 輝度が抑えられているかどうか（ダークモード扱いになっているか）
+    @Environment(\.isLuminanceReduced) var isLuminanceReduced
+
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: MyWidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
             VStack {
                 Text("Hello")
             }
-            .activityBackgroundTint(Color.cyan)
-            .activitySystemActionForegroundColor(Color.black)
+            .activityBackgroundTint(activityBgTint)
+            .activitySystemActionForegroundColor(activityFgTint)
             
         } dynamicIsland: { context in
             DynamicIsland {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    Text("Leading")
+                    if let data = context.attributes.thumbnail, let uiImage = UIImage(data: data) {
+                        Image(uiImage: uiImage)
+                    }
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("Trailing")
+                    Text(context.state.readPages.description)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom")
                     // more content
                 }
             } compactLeading: {
-                Text("L")
+                if let data = context.attributes.thumbnail, let uiImage = UIImage(data: data) {
+                    Image(uiImage: uiImage)
+                }
             } compactTrailing: {
-                Text("T")
+                Text(context.state.readPages.description)
             } minimal: {
-                Text("Min")
+                if let data = context.attributes.thumbnail, let uiImage = UIImage(data: data) {
+                    Image(uiImage: uiImage)
+                }
             }
             .widgetURL(URL(string: "http://www.apple.com"))
-            .keylineTint(Color.red)
+//            .keylineTint(Color.red)
+//            // カスタムのマージンを指定できる
+//            .contentMargins(.all, 8, for: .expanded)
+        }
+    }
+
+    private var activityBgTint: Color {
+        if isLuminanceReduced {
+            return .black
+        } else {
+            return .black
+        }
+    }
+
+    private var activityFgTint: Color {
+        if isLuminanceReduced {
+            return .cyan
+        } else {
+            return .cyan
         }
     }
 }

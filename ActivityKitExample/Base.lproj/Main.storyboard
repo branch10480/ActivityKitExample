@@ -15,9 +15,59 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hXt-rJ-WH6">
+                                <rect key="frame" x="16" y="356.66666666666669" width="361" height="164.00000000000006"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvk-qU-Dtj">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="etu-4v-FJW"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Start Live Activity"/>
+                                        <connections>
+                                            <action selector="didTapStartButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xMJ-F2-6rC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVZ-br-scl">
+                                        <rect key="frame" x="0.0" y="60" width="361" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="4Q3-8k-0rl"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Update Live Activity"/>
+                                        <connections>
+                                            <action selector="didTapUpdateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EWA-Jm-Lvm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Bc-wQ-hfH">
+                                        <rect key="frame" x="0.0" y="120" width="361" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="V1K-gX-BBV"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="End Live Activity"/>
+                                        <connections>
+                                            <action selector="didTapEndButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yO5-ue-Vhb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hXt-rJ-WH6" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="cXh-Ja-knn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hXt-rJ-WH6" secondAttribute="trailing" constant="16" id="kj2-9Y-3dG"/>
+                            <constraint firstItem="hXt-rJ-WH6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="rTO-ae-oLL"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="endButton" destination="1Bc-wQ-hfH" id="Jdi-rd-mJt"/>
+                        <outlet property="startButton" destination="yvk-qU-Dtj" id="4zy-De-gIk"/>
+                        <outlet property="updateButton" destination="nVZ-br-scl" id="cnC-tP-Xqr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -25,8 +75,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
