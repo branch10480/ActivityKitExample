@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "imagecroppingkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/branch10480/ImageCroppingKit",
+      "state" : {
+        "revision" : "d0cd1a352e9827fcf6719fd4aafa1b91086f1144",
+        "version" : "0.2.6"
+      }
+    }
+  ],
+  "version" : 2
+}

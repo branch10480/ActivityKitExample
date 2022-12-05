@@ -19,9 +19,9 @@ public struct MyWidgetAttributes: ActivityAttributes {
     }
 
     // Fixed non-changing properties about your activity go here!
-    public var thumbnail: Data?
+    public var thumbnail: String
 
-    public init(thumbnail: Data? = nil) {
+    public init(thumbnail: String) {
         self.thumbnail = thumbnail
     }
 }
